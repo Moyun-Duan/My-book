@@ -1,0 +1,170 @@
+% mystyle.sty - minimal clean version
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystyle}[2025/10/17 Minimal style]
+
+\RequirePackage[a4paper,left=2.54cm,right=2.54cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Fonts (adjust names if needed on your system)
+\setmainfont{Times New Roman}
+\setCJKmainfont{KaiTi}
+\setCJKsansfont{Microsoft YaHei}
+
+\RequirePackage{setspace}
+\RequirePackage{indentfirst}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+
+% Body: 五号, 单倍行距
+\AtBeginDocument{\zihao{5}\singlespacing}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% Titles
+\titleformat{\chapter}[display]{\fangsong\bfseries\zihao{-3}}{第\ \thechapter\ 章}{1ex}{\centering}
+\titleformat{\section}{\fangsong\bfseries\zihao{4}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\fangsong\zihao{-4}}{\thesubsection}{0.5em}{\begingroup\setstretch{1.5}}[\endgroup]
+
+% Header/footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\cfoot{\thepage}
+
+\endinput
+% mystyle.sty - clean, well-formed style file
+% Created: 2025-10-17
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystyle}[2025/10/17 My document style]
+
+% Page layout
+\RequirePackage[a4paper,showframe=false,left=2.54cm,right=2.54cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% XeLaTeX / LuaLaTeX font support
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Fonts (Windows common names, change if different on your system)
+\setmainfont{Times New Roman}
+\setCJKmainfont{KaiTi} % 正文：楷体
+\setCJKsansfont{Microsoft YaHei}
+% 仿宋通常已在 xeCJK/ctex 中定义为 \fangsong，直接使用即可
+
+% Spacing package (available to other settings)
+\RequirePackage{setspace}
+
+% Ensure ctex's \zihao is available (main document should load ctex)
+% Set body size and spacing at begin document
+\AtBeginDocument{%
+  % 五号字号
+  \zihao{5}
+  % 正文单倍行距
+  \singlespacing
+}
+
+% Indentation
+\RequirePackage{indentfirst}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% Titles: use titlesec for customization
+\RequirePackage{titlesec}
+
+% 一级：chapter - 仿宋 小三号（\zihao{-3}），加粗
+\titleformat{\chapter}[display]
+  {\fangsong\bfseries\zihao{-3}}% format
+  {第\ \thechapter\ 章}% label
+  {1ex}% sep
+  {\centering}% before
+
+% 二级：section - 仿宋 四号（\zihao{4}），加粗
+\titleformat{\section}
+  {\fangsong\bfseries\zihao{4}}
+  {\thesection}
+  {0.5em}
+  {}
+
+% 三级：subsection - 仿宋 小四号（\zihao{-4}），标题本身使用 1.5 倍行距
+\titleformat{\subsection}
+  {\fangsong\zihao{-4}}
+  {\thesubsection}
+  {0.5em}
+  {\begingroup\setstretch{1.5}}[\endgroup]
+
+% Header / Footer
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Info helper
+\newcommand{\mystyleInfo}{%
+  \PackageInfo{mystyle}{Margins: 2.54cm/2.5cm; Body: KaiTi 五号 single; Titles: FangSong 小三/四/小四}
+}
+
+% End of mystyle.sty
+% mystyle.sty - project-wide style for book/main.tex
+% Created: 2025-10-17
+\ProvidesPackage{mystyle}[2025/10/17 My document style]
+
+% Page layout
+\RequirePackage[a4paper,showframe=false,left=2.54cm,right=2.54cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% XeLaTeX / LuaLaTeX font support (recommended for Chinese)
+% If you compile with pdfLaTeX, remove or comment out fontspec/xeCJK lines.
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Default fonts (Windows examples). Replace with your preferred system fonts.
+\setmainfont{Times New Roman}
+\setCJKmainfont{KaiTi} % 正文默认：楷体（五号）
+\setCJKsansfont{SimHei}    % 中文无衬线（黑体）
+% 注意：ctex/xeCJK 通常已定义仿宋切换命令（\fangsong），不要重复定义以避免冲突
+
+% Line spacing and titles
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+
+% 一级标题（chapter）: 小三号 仿宋加黑
+	itleformat{\chapter}[display]{\fangsong\bfseries\zihao{-3}}{第\ \thechapter\ 章}{1ex}{\centering}
+
+% 二级标题（section）: 四号 仿宋加黑
+	itleformat{\section}{\fangsong\bfseries\zihao{4}}{\thesection}{0.5em}{}
+
+% 三级标题（subsection）: 仿宋 小四号（约 12pt），标题本身使用 1.5 倍行距
+% 把行距放在组内，确保只影响标题而不改变正文间距
+	itleformat{\subsection}{\fangsong\zihao{-4}}{\thesubsection}{0.5em}{\begingroup\setstretch{1.5}}[\endgroup]
+
+% Line spacing and paragraphs
+\AtBeginDocument{%
+  % Set main (正文) size to 五号 (约 10.5pt)
+  \zihao{5}% 五号
+  % 单倍行距用于正文
+  \singlespacing
+}
+\RequirePackage{indentfirst}
+\setlength{\parindent}{2em} % 首行缩进
+\setlength{\parskip}{0pt}   % 段间距
+
+% Header / Footer
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Small helper commands - optional
+\newcommand{\mystyleInfo}{%
+  \PackageInfo{mystyle}{Page margins: left/right 2.54cm, top/bottom 2.5cm; Body: KaiTi 五号 single spacing; Titles: FangSong 小三/四/小四 as configured}
+}
+
+% End of mystyle.sty
